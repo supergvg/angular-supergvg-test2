@@ -1,0 +1,19 @@
+:host {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	height: 50px;
+	
+	label {
+		font-size: 0.8em;
+	}
+	
+	.name {
+		flex: 1 1 65%;
+	}
+
+	.leads, .revenue-leads, .rpl {
+		flex: 1 1 15%;
+	}
+}

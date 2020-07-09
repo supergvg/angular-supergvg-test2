@@ -1,0 +1,17 @@
+<ng-container *ngIf="rowData">
+	<div class="name">
+		<label>{{ rowData.name }}</label>
+	</div>
+
+	<div class="leads">
+		<label>{{ rowData.leads }}</label>
+	</div>
+
+	<div class="revenue-leads">
+		<label>{{ rowData.revenue }}</label>
+	</div>
+
+	<div class="rpl">
+		<label>{{ rowData | calculateRpl | currency }}</label>
+	</div>
+</ng-container>

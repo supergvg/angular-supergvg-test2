@@ -1,0 +1,13 @@
+<div class="table-filter">
+	<app-dropdown [dropdownList]="dropdownListType$ | async"></app-dropdown>
+	<app-dropdown [dropdownList]="dropdownListSecond$ | async"></app-dropdown>
+	<app-dropdown [dropdownList]="dropdownListType$ | async"></app-dropdown>
+	<app-dropdown [dropdownList]="dropdownListType$ | async"></app-dropdown>
+</div>
+
+<app-table-header></app-table-header>
+<ng-container *ngFor="let row of tableData$ | async">
+	<app-table-row
+		[rowData]="row"
+	></app-table-row>	
+</ng-container>

@@ -1,0 +1,17 @@
+:host {
+	height: 40px;
+	width: 20%;
+	margin-left: 1%;
+
+	&:first-child {
+		margin-left: 0;
+	}
+	&:last-child {
+		margin-left: auto;
+	}
+	
+	select {
+		height: 100%;
+		width: 100%;
+	}
+}
