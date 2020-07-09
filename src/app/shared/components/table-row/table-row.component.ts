@@ -9,8 +9,19 @@ import { ITableEntity } from '@core/interfaces/entity-models';
 })
 export class TableRowComponent implements OnInit {
 
+	// -----------------------------
+	//  Input properties
+	// -----------------------------
+
 	@Input()
 	rowData: ITableEntity;
+
+	@Input()
+	level = 1;
+
+	// -----------------------------
+	//  Lifecycle functions
+	// -----------------------------
 
 	ngOnInit(): void {
 	}

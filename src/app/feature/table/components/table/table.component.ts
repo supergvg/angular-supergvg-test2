@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FakeHttpServiceService } from '@core/services/fake-http-service.service';
 
-import { interval, Observable, Subject } from 'rxjs';
-import { switchMap, takeUntil, tap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 
 import { ITableEntity } from '@core/interfaces/entity-models';
 import { IDropdownModel } from '@shared/components/dropdown/dropdown.component';
@@ -38,6 +37,12 @@ export class TableComponent implements OnInit, OnDestroy {
 		private readonly fakeHttpServiceService: FakeHttpServiceService
 	) {}
 
+	readonly trackByRowFn = (index, item: ITableEntity) => item.name;
+
+	onClickRowHandler(row: ITableEntity): void {
+		row.selected = !row.selected;
+	}
+
 	// -----------------------------
 	//  Lifecycle functions
 	// -----------------------------
@@ -45,16 +50,7 @@ export class TableComponent implements OnInit, OnDestroy {
 	ngOnInit(): void {
 		this.dropdownListType$ = this.fakeHttpServiceService.getDropDownType();
 		this.dropdownListSecond$ = this.fakeHttpServiceService.getDropDownSecond();
-
-		this.tableData$ = interval(1000)
-			.pipe(
-				takeUntil(this.unsubscribe$$),
-				switchMap(() => this.fakeHttpServiceService.getTableList()),
-				tap(v => console.log('==========', v))
-			);
-			// .subscribe((v: ITableEntity) => {
-			// 	console.log('==========', v);
-			// });
+		this.tableData$ = this.fakeHttpServiceService.getTableList();
 	}
 
 	ngOnDestroy(): void {

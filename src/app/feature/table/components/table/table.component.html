@@ -6,8 +6,19 @@
 </div>
 
 <app-table-header></app-table-header>
-<ng-container *ngFor="let row of tableData$ | async">
+<ng-container *ngFor="let row of tableData$ | async; trackBy: trackByRowFn">
 	<app-table-row
 		[rowData]="row"
-	></app-table-row>	
+		(click)="onClickRowHandler(row)"
+		[level]="1"
+	>
+		<ng-container *ngIf="row.children?.length && row.selected">
+			<ng-container *ngFor="let childRow of row.children; trackBy: trackByRowFn">
+				<app-table-row
+					[rowData]="childRow"
+					[level]="2"
+				></app-table-row>
+			</ng-container>
+		</ng-container>
+	</app-table-row>	
 </ng-container>

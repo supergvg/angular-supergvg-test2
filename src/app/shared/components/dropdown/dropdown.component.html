@@ -1,5 +1,7 @@
-<select>
-	<option *ngFor="let item of dropdownList; trackBy: trackByDropdownItemFn" [value]="item">
-		{{ item.label }}
-	</option>
-</select>
+<label>
+	<select>
+		<option *ngFor="let item of dropdownList; trackBy: trackByDropdownItemFn" [value]="item">
+			{{ item.label }}
+		</option>
+	</select>
+</label>

@@ -1,19 +1,39 @@
 :host {
 	display: flex;
-	flex-direction: row;
-	align-items: center;
-
-	height: 50px;
+	flex-direction: column;
 	
-	label {
-		font-size: 0.8em;
-	}
-	
-	.name {
-		flex: 1 1 65%;
-	}
+	.row {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
 
-	.leads, .revenue-leads, .rpl {
-		flex: 1 1 15%;
+		height: 50px;
+
+		cursor: pointer;
+
+		label {
+			font-size: 0.8em;
+			pointer-events: none;
+		}
+
+		.name {
+			flex: 1 1 65%;
+		}
+
+		.leads, .revenue-leads, .rpl {
+			flex: 1 1 15%;
+		}
+
+		&:hover {
+			background: #ccc;
+		}
+		
+		&[level='2'] {
+			.name {
+				label {
+					padding-left: 2em;
+				}
+			}
+		}
 	}
 }

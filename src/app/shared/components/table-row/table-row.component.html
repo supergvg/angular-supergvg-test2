@@ -1,4 +1,4 @@
-<ng-container *ngIf="rowData">
+<div class="row" *ngIf="rowData" [attr.level]="level">
 	<div class="name">
 		<label>{{ rowData.name }}</label>
 	</div>
@@ -8,10 +8,11 @@
 	</div>
 
 	<div class="revenue-leads">
-		<label>{{ rowData.revenue }}</label>
+		<label>{{ rowData.revenue | currency }}</label>
 	</div>
 
 	<div class="rpl">
 		<label>{{ rowData | calculateRpl | currency }}</label>
 	</div>
-</ng-container>
+</div>
+<ng-content></ng-content>

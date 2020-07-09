@@ -10,7 +10,10 @@
 	app-table-header {
 		margin-top: 0.5em;
 	}
-	
+
 	app-table-row {
+		&:nth-child(2n) {
+			background: #eee;
+		}
 	}
 }

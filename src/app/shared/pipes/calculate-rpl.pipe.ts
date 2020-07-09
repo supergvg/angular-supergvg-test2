@@ -7,6 +7,10 @@ import { ITableEntity } from '@core/interfaces/entity-models';
 export class CalculateRplPipe implements PipeTransform {
 
 	transform(value: ITableEntity): string {
+		if (!value) {
+			return '';
+		}
+
 		return (value.revenue / value.leads).toFixed(2);
 	}
 

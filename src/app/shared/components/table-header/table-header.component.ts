@@ -8,6 +8,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class TableHeaderComponent implements OnInit {
 
+	// -----------------------------
+	//  Lifecycle functions
+	// -----------------------------
+
 	ngOnInit(): void {
 	}
 

@@ -40,16 +40,26 @@ export class FakeHttpServiceService {
 	}
 
 	getTableList(): Observable<ITableEntity[]> {
+		const random = (child?: boolean): ITableEntity => {
+			let children: ITableEntity[];
+			if (!child) {
+				children = [ random(true), random(true), random(true) ];
+			}
+
+			return ({
+				name: `Name - ${Math.ceil(Math.random() * 100)}`,
+				leads: Math.ceil(Math.random() * 100),
+				revenue: Math.ceil(Math.random() * 1000),
+				children
+			});
+		};
+
 		return timer(500)
 			.pipe(
 				map(() => {
 					return Array(10)
 						.fill(undefined)
-						.map(() => ({
-							name: `Name - ${Math.ceil(Math.random() * 100)}`,
-							leads: Math.ceil(Math.random() * 100),
-							revenue: Math.ceil(Math.random() * 1000)
-						}));
+						.map(random);
 				})
 			);
 	}
